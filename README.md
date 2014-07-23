@@ -56,7 +56,7 @@ kenBurnsContainer.panAndZoom(null, 1.0, 4000);  // zoom-out with custom duration
 
 ## Documentation
 
-- [API Reference](docs/KenBurnsContainer)
+- [API Reference](docs/KenBurnsContainer.md)
 
 ## Contribute
 
