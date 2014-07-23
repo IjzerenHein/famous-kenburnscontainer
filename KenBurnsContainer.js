@@ -44,7 +44,7 @@ define(function(require, exports, module) {
      * @class
      * @param {Object} options Options.
      * @param {Number} options.duration Default duration in msec for `panAndZoom` (default: 10000)
-     * @param {Number} options.delay Default duration in msec for `delay` (default: 5000)
+     * @param {Number} options.delay Default duration in msec for `delay` (default: 1000)
      * @param {Object} options.modifier Options that are passed to the internal `StateModifier`
      * @param {Object} options.containerSurface Options that are passed to the internal `ContainerSurface`
      * @alias module:KenBurnsContainer
@@ -69,7 +69,7 @@ define(function(require, exports, module) {
 
     KenBurnsContainer.DEFAULT_OPTIONS = {
         duration: 10000,             // default duration for panAndZoom()
-        delay: 5000,                 // default delay for delay()
+        delay: 1000,                 // default delay for delay()
         modifier: {
             origin: [0.5, 0.5],      // start position
             align: [0.5, 0.5]        // start position
@@ -138,6 +138,7 @@ define(function(require, exports, module) {
      * @param {Function} [callback] Function to call upon completion
      */
     KenBurnsContainer.prototype.delay = function(duration, callback) {
+        duration = duration || this.options.delay;
         if (!duration) {
             return;
         }

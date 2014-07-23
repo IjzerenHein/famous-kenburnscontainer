@@ -20,7 +20,7 @@ Ken burns effect for famo.us
 
 - options `Object` - Options.
   - duration `Number` - Default duration in msec for `panAndZoom` (default: 10000)
-  - delay `Number` - Default duration in msec for `delay` (default: 5000)
+  - delay `Number` - Default duration in msec for `delay` (default: 1000)
   - modifier `Object` - Options that are passed to the internal `StateModifier`
   - containerSurface `Object` - Options that are passed to the internal `ContainerSurface`
 
