@@ -32,11 +32,8 @@ define(function(require) {
     // import dependencies
     var Engine = require('famous/core/Engine');
     var Modifier = require('famous/core/Modifier');
-    var StateModifier = require('famous/modifiers/StateModifier');
-    var KenBurnsContainer = require('famous-kenburns');
-    var ImageSurface = require('famous/surfaces/ImageSurface');
     var Surface = require('famous/core/Surface');
-    var Transform = require('famous/core/Transform');
+    var KenBurnsContainer = require('famous-kenburnscontainer');
 
     //
     // create the main context
@@ -49,7 +46,7 @@ define(function(require) {
     var modifier = new Modifier({
         origin: [0.5, 0.5],
         align: [0.5, 0.5],
-        size: [845, 468]
+        size: [320, 190]
     });
     var kenBurns = new KenBurnsContainer({
         containerSurface: {
@@ -68,19 +65,31 @@ define(function(require) {
     kenBurns.add(photo);
 
     //
+    // create frame
+    //
+    var frameModifier = new Modifier({
+        origin: [0.5, 0.5],
+        align: [0.5, 0.5]
+    });
+    var frame = new Surface({
+        classes: ['frame']
+    });
+    mainContext.add(frameModifier).add(frame);
+
+    //
     // Do some nice ken burns effects
     //
-    kenBurns.panAndZoom([0.1, 0.05], 1.9); // eric idle
+    kenBurns.panAndZoom([0.0, 0.05], 1.9); // eric idle
     kenBurns.delay();
-    kenBurns.panAndZoom([0.35, 0.05], 3.0); // graham chapman
+    kenBurns.panAndZoom([0.32, 0.05], 3.0); // graham chapman
     kenBurns.delay();
-    kenBurns.panAndZoom([0.65, 0.1], 2.6); // john cleese
+    kenBurns.panAndZoom([0.65, 0.1], 2.8); // john cleese
     kenBurns.delay();
-    kenBurns.panAndZoom([0.9, 0.44], 2.9); // terry gilliam
+    kenBurns.panAndZoom([1.0, 0.44], 3.3); // terry gilliam
     kenBurns.delay();
     kenBurns.panAndZoom([0.80, 0.6], 2.2); // terry jones
     kenBurns.delay();
-    kenBurns.panAndZoom([0.45, 0.65], 2.4); // michael palin
+    kenBurns.panAndZoom([0.45, 0.65], 2.9); // michael palin
     kenBurns.delay();
     kenBurns.panAndZoom([0.5, 0.5], 1.0); // zoom-out - monty python, thanks guys
 });

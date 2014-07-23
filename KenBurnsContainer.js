@@ -43,6 +43,10 @@ define(function(require, exports, module) {
     /**
      * @class
      * @param {Object} options Options.
+     * @param {Number} options.duration Default duration in msec for `panAndZoom` (default: 10000)
+     * @param {Number} options.delay Default duration in msec for `delay` (default: 5000)
+     * @param {Object} options.modifier Options that are passed to the internal `StateModifier`
+     * @param {Object} options.containerSurface Options that are passed to the internal `ContainerSurface`
      * @alias module:KenBurnsContainer
      */
     function KenBurnsContainer() {
@@ -64,20 +68,21 @@ define(function(require, exports, module) {
     KenBurnsContainer.prototype.constructor = KenBurnsContainer;
 
     KenBurnsContainer.DEFAULT_OPTIONS = {
-        duration: 10000,            // default duration for panAndZoom()
-        delay: 5000,                // default delay for delay()
+        duration: 10000,             // default duration for panAndZoom()
+        delay: 5000,                 // default delay for delay()
         modifier: {
-            origin: [0.5, 0.5],
-            align: [0.5, 0.5]
+            origin: [0.5, 0.5],      // start position
+            align: [0.5, 0.5]        // start position
         },
-        easeIn: 0.05,
-        easeOut: 0.95
+        containerSurface: {
+            properties: {
+                overflow: 'hidden'   // clip content inside container
+            }
+        }
     };
 
     /**
      * Add renderables to this object's render tree
-     *
-     * @method add
      *
      * @param {Object} obj renderable object
      * @return {RenderNode} RenderNode wrapping this object, if not already a RenderNode
@@ -95,75 +100,42 @@ define(function(require, exports, module) {
 
     /**
      * Checks whether the effect is active.
+     *
+     * @return {Boolean} Active-state
      */
     KenBurnsContainer.prototype.isActive = function isActive() {
         this.modifier._transformState.isActive();
     };
 
-    function _easeInOut(t, v) {
-        if (v === undefined) {
-            v = t;
-        }
-
-        //v *= Math.sin((Math.PI / 180) * (t * 90));
-
-
-
-        /*if (t < this.options.easeIn) {
-            //v *= Easing.inOutQuad(t * (1 / this.options.easeIn));
-        }
-        else if (t > this.options.easeOut) {
-            //v *= Easing.outQuad(t * (1 / (1 - this.options.easeOut)));
-            //v *= Easing.inOutQuad((t - this.options.easeOut) * (1 / (1 - this.options.easeOut)));
-        }*/
-        return v;
-    }
-
     /**
-     * Adjust the panning speed when also zooming.
-     */
-    function _zoomDependentPanningCurve(zoomDiff, distance, t) {
-        /*if (!diff) {
-            return _easeInOut.call(this, t, t);
-        }*/
-        //return Math.pow(t, 1 / Math.exp(zoomDiff * distance));
-        return Easing.inOutSine(t);
-
-        /*var result;
-        if (zoomDiff < 0) {
-            result = Math.pow(t, Math.abs(zoomDiff) + 1);
-        }
-        else {
-            result = Math.pow(t, 1 / Math.exp(zoomDiff +));
-        }
-        return _easeInOut.call(this, t, result);*/
-    }
-
-    /**
-     * Pan and zoom like the master Ken Burns.
+     * Pans and/or zooms the child renderables with the ken burns effect.
+     *
+     * @param {Array.Number} [position] Position in relative coordinates (see origin/align)
+     * @param {Number} [zoomScale] Scale-factor to use for zooming
+     * @param {Number} [duration] Duration in milliseconds (when omitted `options.duration` is used)
+     * @param {Function} [callback] Function to call upon completion
      */
     KenBurnsContainer.prototype.panAndZoom = function(position, zoomScale, duration, callback) {
-        var oldPosition = this._newPosition;
         this._newPosition = position || this._newPosition;
-        var oldZoomScale = this._newZoomScale;
         this._newZoomScale = zoomScale || this._newZoomScale;
         var zoomTransition = {
             duration: duration || this.options.duration,
             curve: Easing.inOutSine
         };
-        var zoomDiff = this._newZoomScale - oldZoomScale;
-        var distance = Math.abs(Math.sqrt(Math.exp(oldPosition[0] - this._newPosition[0]) + Math.exp(oldPosition[1] - this._newPosition[1])));
         this.modifier.setTransform(Transform.scale(this._newZoomScale, this._newZoomScale, 1), zoomTransition, callback);
         var panTransition = {
             duration: duration || this.options.duration,
-            curve: _zoomDependentPanningCurve.bind(this, zoomDiff, distance)
+            curve: Easing.inOutSine
         };
         this.modifier.setOrigin(this._newPosition, panTransition);
         this.modifier.setAlign(this._newPosition, panTransition);
     };
 
     /**
-     * Waits for a certain amount of time
+     * Waits for a certain amount of time.
+     *
+     * @param {Number} [duration] Duration in milliseconds (when omitted `options.delay` is used)
+     * @param {Function} [callback] Function to call upon completion
      */
     KenBurnsContainer.prototype.delay = function(duration, callback) {
         if (!duration) {

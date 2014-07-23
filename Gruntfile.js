@@ -10,10 +10,10 @@ module.exports = function(grunt) {
       }
     },
     jscs: {
-        src: ['*.js'],
-        options: {
-            config: '.jscsrc'
-        }
+      src: ['*.js'],
+      options: {
+        config: '.jscsrc'
+      }
     },
     qunit: {
       files: ['test/**/*.html']
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
           index: true
         },
         files: [
-            { src: 'ListView.js', dest: 'docs/ListView.md' }
+            { src: 'KenBurnsContainer.js', dest: 'docs/KenBurnsContainer.md' }
         ]
       }
     }

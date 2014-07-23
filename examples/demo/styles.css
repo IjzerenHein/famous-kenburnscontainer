@@ -8,7 +8,14 @@ body {
 }
 
 .kenburns {
+    background: white;
     background: rgba(255, 255, 255, 0.7);
+}
+
+.frame {
+    background-image: url('frame.png');
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
 .photo {
