@@ -1,0 +1,19 @@
+body, div {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: bold;
+}
+
+body {
+    background-image: url('back.jpg');
+}
+
+.kenburns {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.photo {
+    background-image: url('image.jpg');
+    background-size: 100% 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
