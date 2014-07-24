@@ -15,9 +15,6 @@ module.exports = function(grunt) {
         config: '.jscsrc'
       }
     },
-    qunit: {
-      files: ['test/**/*.html']
-    },
     jsdoc2md: {
       separateOutputFilePerInput: {
         options: {
@@ -31,11 +28,10 @@ module.exports = function(grunt) {
   });
 
   // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-eslint');
-  grunt.loadNpmTasks('grunt-contrib-jscs');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
+  grunt.loadNpmTasks('grunt-eslint');
+  grunt.loadNpmTasks('grunt-jscs');
   grunt.loadNpmTasks('grunt-jsdoc-to-markdown');
 
   // Default task.
-  grunt.registerTask('default', ['eslint', 'jscs', 'jsdoc2md', 'qunit']);
+  grunt.registerTask('default', ['eslint', 'jscs', 'jsdoc2md']);
 };

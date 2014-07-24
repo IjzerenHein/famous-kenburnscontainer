@@ -18,11 +18,11 @@ Ken burns effect for famo.us
 ###new KenBurnsContainer(options)
 **Params**
 
-- options `Object` - Options.
-  - duration `Number` - Default duration in msec for `panAndZoom` (default: 10000)
-  - delay `Number` - Default duration in msec for `delay` (default: 1000)
-  - modifier `Object` - Options that are passed to the internal `StateModifier`
-  - containerSurface `Object` - Options that are passed to the internal `ContainerSurface`
+- options `Object` - Options.  
+  - duration `Number` - Default duration in msec for `panAndZoom` (default: 10000)  
+  - delay `Number` - Default duration in msec for `delay` (default: 1000)  
+  - modifier `Object` - Options that are passed to the internal `StateModifier`  
+  - containerSurface `Object` - Options that are passed to the internal `ContainerSurface`  
 
 <a name="module_KenBurnsContainer#add"></a>
 ###kenBurnsContainer.add(obj)
@@ -30,7 +30,7 @@ Add renderables to this object's render tree
 
 **Params**
 
-- obj `Object` - renderable object
+- obj `Object` - renderable object  
 
 **Returns**: `RenderNode` - RenderNode wrapping this object, if not already a RenderNode  
 <a name="module_KenBurnsContainer#halt"></a>
@@ -48,10 +48,10 @@ Pans and/or zooms the child renderables with the ken burns effect.
 
 **Params**
 
-- [position] `Array.Number` - Position in relative coordinates (see origin/align)
-- [zoomScale] `Number` - Scale-factor to use for zooming
-- [duration] `Number` - Duration in milliseconds (when omitted `options.duration` is used)
-- [callback] `function` - Function to call upon completion
+- \[position\] `Array.Number` - Position in relative coordinates (see origin/align)  
+- \[zoomScale\] `Number` - Scale-factor to use for zooming  
+- \[duration\] `Number` - Duration in milliseconds (when omitted `options.duration` is used)  
+- \[callback\] `function` - Function to call upon completion  
 
 <a name="module_KenBurnsContainer#delay"></a>
 ###kenBurnsContainer.delay([duration], [callback])
@@ -59,6 +59,6 @@ Waits for a certain amount of time.
 
 **Params**
 
-- [duration] `Number` - Duration in milliseconds (when omitted `options.delay` is used)
-- [callback] `function` - Function to call upon completion
+- \[duration\] `Number` - Duration in milliseconds (when omitted `options.delay` is used)  
+- \[callback\] `function` - Function to call upon completion  
 
