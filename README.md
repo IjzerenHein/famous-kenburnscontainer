@@ -66,6 +66,6 @@ The easiest way to support this project is by giving it a star.
 ## Contact
 - 	@IjzerenHein
 - 	http://www.gloey.nl
-- 	hrutjes@gmail.com
+- 	hrutjes@gmail.com (for hire)
 
 © 2014 - Hein Rutjes

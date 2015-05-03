@@ -4,13 +4,13 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     eslint: {
-      target: ['*.js'],
+      target: ['KenBurnsContainer.js'],
       options: {
         config: '.eslintrc'
       }
     },
     jscs: {
-      src: ['*.js'],
+      src: ['KenBurnsContainer.js'],
       options: {
         config: '.jscsrc'
       }

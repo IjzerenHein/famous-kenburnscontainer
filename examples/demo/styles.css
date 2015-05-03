@@ -3,7 +3,7 @@ body, div {
     font-weight: bold;
 }
 
-body {
+body > div {
     background-image: url('back.jpg');
 }
 

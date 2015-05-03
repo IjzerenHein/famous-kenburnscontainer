@@ -1,6 +1,6 @@
 {
   "name": "famous-kenburnscontainer",
-  "version": "0.0.1",
+  "version": "0.3.0",
   "homepage": "https://github.com/IjzerenHein/famous-kenburnscontainer",
   "authors": [
     "Hein Rutjes <hrutjes@gmail.com>"
@@ -25,9 +25,5 @@
     "examples",
     "docs",
     "Gruntfile.js"
-  ],
-  "dependencies": {
-    "requirejs": "~2.1.11",
-    "famous": "~0.2.0"
-  }
+  ]
 }
